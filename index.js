@@ -21,39 +21,27 @@ getBooks().then((books) => {
                           </div>  
                       </div>`;
     body.appendChild(div);
+
+    const badges = document.querySelectorAll(".badge");
+    const addToCart = document.querySelectorAll(".add-to-card");
+    let cart = [];
+
+    for (let i = 0; i < addToCart.length; i++) {
+      addToCart[i].addEventListener("click", () => {
+        badges[i].style.visibility = "visible";
+        cart.concat(books[i]);
+        console.log(cart);
+      });
+    }
+
+    const skipBtn = document.querySelectorAll(".skip");
+    const bookCard = document.querySelectorAll(".card");
+
+    for (let i = 0; i < skipBtn.length; i++) {
+      // console.log(cards[i]);
+      skipBtn[i].addEventListener("click", () => {
+        bookCard[i].style.display = "none";
+      });
+    }
   });
 });
-
-const logged = () => {
-  const badges = document.querySelectorAll(".badge");
-  const addToCart = document.querySelectorAll(".add-to-card");
-
-  for (let i = 0; i < addToCart.length; i++) {
-    addToCart[i].addEventListener("click", () => {
-      badges[i].classList.remove("show");
-      console.log("clicked");
-    });
-  }
-};
-
-// addToCart.forEach((btn) => {
-//   btn.addEventListener("click", logged);
-// });
-
-// console.log(books[b].price);
-
-//   for (let b = 0; b < books.length; b++) {
-//     const div = document.createElement("div");
-//     div.innerHTML = `<div class="col-2" >
-//                         <div class="card" >
-//                         <span class="badge badge-pill badge-success">Added to Cart</span>
-//                         <img class="card-img-top" src=${books[b].img} >
-//                         <div class="card-title">${books[b].title} </div>
-//                         <div class="card-text">${books[b].category}</div>
-//                         <a href="#" class="btn add-to-card btn-primary">Add to cart</a>
-//                         </div>
-//                     </div>`;
-//     body.appendChild(div);
-
-//     // console.log(books[b].price);
-//   }
